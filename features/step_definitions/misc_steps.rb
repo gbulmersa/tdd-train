@@ -12,7 +12,7 @@ Given(/^The user is on the page$/) do
     #browser.find_element(:xpath => "//h1[contains(.,'random friend')]").displayed?
     browser.find_element(:xpath => "//button").click
     puts "Test Passed:" if wait.until {
-    puts browser.find_element(:xpath => "//input[@type='text']").value
+    (browser.find_element(:xpath => "//input[@type='text']").text != "")
     # browser.text_field(:id=> "result").value 
     }
   browser.quit
