@@ -3,9 +3,21 @@
 <body>
     <h1>your random friend</h1>
     <p>
-        <button id="btnNow">Get random number </button>
+        <button id="btnNow" onClick="setResult();">Get random number </button>
         <br/>
         <input type="text" id="result" value="" />
     </p>
+        <script type="text/javascript">
+            setResult = function() {
+                document.getElementById("result").value = getRandomInt(0, 100);
+            }
+
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min)) + min;
+            }
+        </script>
     </body>
+    
     </html>
