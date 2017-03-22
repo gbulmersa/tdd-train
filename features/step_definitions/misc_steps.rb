@@ -11,7 +11,7 @@ Given(/^The user is on the page$/) do
   #chrome
   #browser = Selenium::WebDriver.for :chrome, switches: %w[--ignore-certificate-errors --disable-gpu --disable-popup-blocking --disable-translate]
   
-  browser.navigate.to "http://tdd-train.com/tdd-train/rn.html"
+  browser.navigate.to "http://23.23.241.33/tdd-train/rn.html"
   wait = Selenium::WebDriver::Wait.new(:timeout => 7)
   #puts "Test Passed: Found the word random friend in an anchor tag" if wait.until {
     #browser.find_element(:xpath => "//h1[contains(.,'random friend')]").displayed?
