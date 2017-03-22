@@ -1,33 +1,42 @@
 require 'selenium-webdriver'
 require 'rubygems'
- 
+require 'headless'
+require 'rbconfig'
+
+# http://stackoverflow.com/questions/4871309/what-is-the-correct-way-to-detect-if-ruby-is-running-on-windows
+is_windows = (RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/)
 
 Given(/^The user is on the page$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
+  puts "is_windows: #{is_windows}"
+  puts "Creating headless..."
+  if !is_windows then
+	headless = Headless.new
+	headless.start
+  end
+  begin
+	  puts "Creating firefox driver..."
+	  browser = Selenium::WebDriver.for :firefox
 
-  #firefox
-  browser = Selenium::WebDriver.for :firefox
-
-  #chrome
-  #browser = Selenium::WebDriver.for :chrome, switches: %w[--ignore-certificate-errors --disable-gpu --disable-popup-blocking --disable-translate]
-  
-  browser.navigate.to "http://23.23.241.33/tdd-train/rn.html"
-  wait = Selenium::WebDriver::Wait.new(:timeout => 7)
-  #puts "Test Passed: Found the word random friend in an anchor tag" if wait.until {
-    #browser.find_element(:xpath => "//h1[contains(.,'random friend')]").displayed?
-  browser.find_element(:xpath => "//button").click
-    #puts "Test Passed:" if wait.until {
-  (browser.find_element(:xpath => "//input[@type='text']").text != "")
-    # browser.text_field(:id=> "result").value 
-    #}
-  browser.quit
-
+	  puts "Navigating to rn.html..."
+	  browser.navigate.to "http://23.23.241.33/tdd-train/rn.html"
+	  wait = Selenium::WebDriver::Wait.new(:timeout => 7)
+	  
+	  puts "Calling find_element //button..."
+	  browser.find_element(:xpath => "//button").click
+	  testResult = (browser.find_element(:xpath => "//input[@type='text']").text != "")
+  ensure
+	browser.quit
+	if !is_windows then
+		headless.destroy
+	end
+	testResult
+  end
 end
 
 When(/^The GetRandom button is pressed$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
+  # pending
 end
 
 Then(/^A random number appears in the result box$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
+  # pending
 end
