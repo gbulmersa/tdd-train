@@ -1,5 +1,7 @@
+require_relative '.\util.rb'
+
 Given(/^the user is using our text reversal application$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  true
 end
 
 When(/^the user provides the text that they want to be reversed$/) do

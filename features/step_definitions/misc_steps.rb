@@ -2,14 +2,12 @@ require 'selenium-webdriver'
 require 'rubygems'
 require 'headless'
 require 'rbconfig'
-
-# http://stackoverflow.com/questions/4871309/what-is-the-correct-way-to-detect-if-ruby-is-running-on-windows
-is_windows = (RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/)
+require_relative '.\util.rb'
 
 Given(/^The user is on the page$/) do
   puts "is_windows: #{is_windows}"
   puts "Creating headless..."
-  if !is_windows then
+  if !Util.is_windows then
 	headless = Headless.new
 	headless.start
   end
