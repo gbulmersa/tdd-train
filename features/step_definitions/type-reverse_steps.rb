@@ -14,13 +14,14 @@ When(/^the user provides the text that they want to be reversed$/) do
 end
 
 When(/^the user asks for text reversal$/) do
-   btnTest=	browser.find_element(:xpath => "//input[@id='btnNow'").click
+   btnTest=	browser.find_element(:xpath => "//button[@id='btnNow']").click
    btnTest
 end
 
 Then(/^the text that the user provided is reversed$/) do
-  testResult = (browser.find_element(:xpath => "//input[@id='testtext']").text == "txet ym")
-  testResult
+  testResult = (browser.find_element(:xpath => "//input[@id='testtext']").get_text == "naivlis")
+ 
+testResult
 
 end
 
