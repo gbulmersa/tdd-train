@@ -19,10 +19,14 @@ When(/^the user asks for text reversal$/) do
 end
 
 Then(/^the text that the user provided is reversed$/) do
-  testResult = (browser.find_element(:xpath => "//input[@id='testtext']").get_text == "naivlis")
- 
-testResult
-
+  wait = Selenium::WebDriver::Wait.new(:timeout => 7)
+  testResult =  wait.until{
+    element = browser.find_element(:id, "testtext")
+    element if element.displayed?
+  }
+  puts testResult.attribute("value")
+  puts (testResult.attribute("value") == "naivlis")
+  (testResult.attribute("value") == "naivlis")
 end
 
 #Util.clean_up(browser)
