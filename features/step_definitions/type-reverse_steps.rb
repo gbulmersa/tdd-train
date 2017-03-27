@@ -8,7 +8,7 @@ end
 
 When(/^the user provides the text that they want to be reversed$/) do
   # Use find_element to get text input
-  testResult = (browser.find_element(:xpath => "//input[@id='testtext']").text == "my text")
+  testResult = (browser.find_element(:xpath => "//input[@id='testtext']").text = "my text")
   testResult
 end
 
