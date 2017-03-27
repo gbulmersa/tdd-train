@@ -20,4 +20,4 @@ Then(/^the text that the user provided is reversed$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Util.clean_up(browser)
+#Util.clean_up(browser)
