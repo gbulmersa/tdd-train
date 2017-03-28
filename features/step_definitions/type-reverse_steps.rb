@@ -1,6 +1,6 @@
 require_relative '.\util.rb'
 
-browser = Util.load_page("http://23.23.241.33/tdd-train/tr.html")
+#browser = Util.load_page("http://23.23.241.33/tdd-train/tr.html")
 testReverse = "Jason"
 
 Given(/^the user is using our text reversal application$/) do
